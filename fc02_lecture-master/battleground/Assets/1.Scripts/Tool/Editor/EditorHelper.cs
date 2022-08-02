@@ -71,7 +71,7 @@ public class EditorHelper
         {
 			if(GUILayout.Button("ADD",GUILayout.Width(uiWidth)))
             {
-				data.AddData("New Data");
+				data.AddData("New Effect");
 				selection = data.GetDataCount()-1;
 				source = null;
             }

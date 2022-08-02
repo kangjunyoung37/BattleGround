@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class BaseData : ScriptableObject
 {
-    public const string dataDirectory = "/9.ResourcesData/Resources/Data";
+    public const string dataDirectory = "/9.ResourcesData/Resources/Data/";
     public string[] names = null;
 
     public BaseData()
@@ -40,13 +40,13 @@ public class BaseData : ScriptableObject
         retList = new string[this.names.Length];
         for(int i = 0; i <this.names.Length; i++)
         {
-            if(filterWord != "")
-            {
-                if (names[i].ToLower().Contains(filterWord.ToLower())== false)
-                {
-                    continue;
-                }
-            }
+            //if(filterWord != "")
+            //{
+            //    if (names[i].ToLower().Contains(filterWord.ToLower())== false)
+            //    {
+            //        continue;
+            //    }
+            //}필터링 시키기
             if(showId)
             {
                 retList[i] = i.ToString() + " : " + this.names[i];
