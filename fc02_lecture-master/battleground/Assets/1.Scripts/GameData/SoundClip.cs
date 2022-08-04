@@ -101,7 +101,7 @@ public class SoundClip
         }
     }
 
-    public void FandIn(float time, Interpolate.EaseType easeType)//easeType 은 곡선 그래프
+    public void FadeIn(float time, Interpolate.EaseType easeType)//easeType 은 곡선 그래프
     {
         this.isFadeout = false;
         this.fadeTime1 = 0.0f;
