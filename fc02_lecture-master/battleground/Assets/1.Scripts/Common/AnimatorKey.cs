@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FC;
+using KJY;
 
-namespace FC
+namespace KJY
 {
     public class AnimatorKey
     {

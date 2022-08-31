@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyVariables : MonoBehaviour
+using System;
+[Serializable]
+public class EnemyVariables 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // 사격을 위해 결정할 멤버변수
+    //커버를 위해서 결정할 멤버변수
+    //반복을 위해서 결정할 멤버변수
+    //패트롤을 위해서 결정할 멤버변수
+    //공격을 위해서 결정할 멤버변수
+    public bool feelAlert;
+    public bool healAlert;
+    public bool advanceCoverDecision;
+    public int waitRounds;
+    public bool repeatShot;
+    public float waitInCoverTime;
+    public float coverTime;
+    public float patrolTimer;
+    public float shotTimer;
+    public float startShootTimer;
+    public float currentShots;
+    public float shotsInRounds;
+    public float blindEngageTimer;
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

@@ -44,11 +44,11 @@ public class BehaviourController : MonoBehaviour
         behaviours = new List<GenericBehaviour>();
         overrideBehaviours = new List<GenericBehaviour>();
         myAnimator = GetComponent<Animator>();
-        hFloat = Animator.StringToHash(FC.AnimatorKey.Horizontal);
-        vFloat = Animator.StringToHash(FC.AnimatorKey.Vertical);
+        hFloat = Animator.StringToHash(KJY.AnimatorKey.Horizontal);
+        vFloat = Animator.StringToHash(KJY.AnimatorKey.Vertical);
         camScript = playerCamera.GetComponent<ThirdPersonOrbitCamera>();
         myRigidbody = GetComponent<Rigidbody>();
-        groundedBool = Animator.StringToHash(FC.AnimatorKey.Grounded);
+        groundedBool = Animator.StringToHash(KJY.AnimatorKey.Grounded);
         colExtents = GetComponent<Collider>().bounds.extents;
         myTransform = transform;
     }
@@ -273,7 +273,7 @@ public abstract class GenericBehaviour : MonoBehaviour
     protected void Awake()
     {
         this.behaviourController = GetComponent<BehaviourController>();
-        speedFloat = Animator.StringToHash(FC.AnimatorKey.Speed);
+        speedFloat = Animator.StringToHash(KJY.AnimatorKey.Speed);
         canSprint = true;
         //동작 타입을 해시코드로 가지고 있음 추후에 구별용으로 사용
         behaviourCode = this.GetType().GetHashCode();

@@ -2,17 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State : MonoBehaviour
+[CreateAssetMenu(menuName ="PluggableAI/State")]
+public class State : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Action[] actions;
+    public Transition[] transitions;
+    public Color sceneGizmoColor = Color.gray;
 
-    // Update is called once per frame
-    void Update()
+    public void DoActions(StateController controller)
     {
-        
+        for(int i = 0; i < actions.Length; i++)
+        {
+            actions[i].Act(controller);
+        }
+    }
+    public void OnEnableActions(StateController controller)//초기화 함수
+    {
+        for(int i = 0; i <actions.Length; i++)
+        {
+            actions[i].OnReadyAction(controller);
+        }
+        for(int i = transitions.Length -1;i >= 0; i-- )
+        {
+            transitions[i].decision.OnEnableDecision(controller);
+        }
+    }
+    public void CheckTranstions(StateController controller)
+    {
+        for(int i = 0; i < transitions.Length; i++)
+        {
+            bool decision = transitions[i].decision.Decide(controller);
+            if(decision)
+            {
+                controller.TransitionToState(transitions[i].trueState, transitions[i].decision);
+            }
+            else
+            {
+                controller.TransitionToState(transitions[i].falseState, transitions[i].decision);
+            }
+            if(controller.currentState != this)
+            {
+                controller.currentState.OnEnableActions(controller);
+                break;
+            }
+        }
     }
 }

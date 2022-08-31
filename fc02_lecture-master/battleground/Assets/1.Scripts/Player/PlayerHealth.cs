@@ -55,13 +55,13 @@ public class PlayerHealth : HealthBase
     private void Kill()
     {
         IsDead = true;
-        gameObject.layer = FC.TagAndLayer.GetLayerByName(FC.TagAndLayer.LayerName.Default);
-        gameObject.tag = FC.TagAndLayer.TagName.Untagged;
+        gameObject.layer = KJY.TagAndLayer.GetLayerByName(KJY.TagAndLayer.LayerName.Default);
+        gameObject.tag = KJY.TagAndLayer.TagName.Untagged;
         healthHUD.gameObject.SetActive(false);
         healthHUD.parent.Find("WeaponHUD").gameObject.SetActive(false);
-        myAnimator.SetBool(FC.AnimatorKey.Aim, false);
-        myAnimator.SetBool(FC.AnimatorKey.Cover, false);
-        myAnimator.SetFloat(FC.AnimatorKey.Speed, 0f);
+        myAnimator.SetBool(KJY.AnimatorKey.Aim, false);
+        myAnimator.SetBool(KJY.AnimatorKey.Cover, false);
+        myAnimator.SetFloat(KJY.AnimatorKey.Speed, 0f);
         foreach(GenericBehaviour behaviour in GetComponentsInChildren<GenericBehaviour>())
         {
             behaviour.enabled = false;

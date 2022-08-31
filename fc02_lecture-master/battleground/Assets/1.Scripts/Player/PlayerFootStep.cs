@@ -28,10 +28,10 @@ public class PlayerFootStep : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         leftFoot = myAnimator.GetBoneTransform(HumanBodyBones.LeftFoot);
         rightFoot = myAnimator.GetBoneTransform (HumanBodyBones.RightFoot);
-        groundedBool = Animator.StringToHash(FC.AnimatorKey.Grounded);
-        coverBool = Animator.StringToHash(FC.AnimatorKey.Cover);
-        aimBool = Animator.StringToHash(FC.AnimatorKey.Aim);
-        crouchFloat = Animator.StringToHash(FC.AnimatorKey.Crouch);
+        groundedBool = Animator.StringToHash(KJY.AnimatorKey.Grounded);
+        coverBool = Animator.StringToHash(KJY.AnimatorKey.Cover);
+        aimBool = Animator.StringToHash(KJY.AnimatorKey.Aim);
+        crouchFloat = Animator.StringToHash(KJY.AnimatorKey.Crouch);
     }
 
     private void PlayFootStep()

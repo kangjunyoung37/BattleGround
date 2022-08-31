@@ -52,14 +52,14 @@ public class InteractiveWeapon : MonoBehaviour
     private void Awake()
     {
         gameObject.name = this.label_weaponName;
-        gameObject.layer = LayerMask.NameToLayer(FC.TagAndLayer.LayerName.IgnoreRayCast);
+        gameObject.layer = LayerMask.NameToLayer(KJY.TagAndLayer.LayerName.IgnoreRayCast);
         foreach(Transform tr in transform)
         {
-            tr.gameObject.layer = LayerMask.NameToLayer(FC.TagAndLayer.LayerName.IgnoreRayCast);
+            tr.gameObject.layer = LayerMask.NameToLayer(KJY.TagAndLayer.LayerName.IgnoreRayCast);
         }
-        player = GameObject.FindGameObjectWithTag(FC.TagAndLayer.LayerName.Player);
+        player = GameObject.FindGameObjectWithTag(KJY.TagAndLayer.LayerName.Player);
         playerInventory = player.GetComponent<ShootBehaviour>();
-        gameController = GameObject.FindGameObjectWithTag(FC.TagAndLayer.TagName.GameController);
+        gameController = GameObject.FindGameObjectWithTag(KJY.TagAndLayer.TagName.GameController);
 
         if(weaponHUD == null)
         {

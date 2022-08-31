@@ -28,8 +28,8 @@ public class MoveBehaviour : GenericBehaviour
     {
         myTransform = transform;
         capsuleCollider = GetComponent<CapsuleCollider>();
-        jumpBool = Animator.StringToHash(FC.AnimatorKey.Jump);
-        groundedBool = Animator.StringToHash(FC.AnimatorKey.Grounded);
+        jumpBool = Animator.StringToHash(KJY.AnimatorKey.Jump);
+        groundedBool = Animator.StringToHash(KJY.AnimatorKey.Grounded);
         behaviourController.GetAnimator.SetBool(groundedBool, true);
 
         //

@@ -24,8 +24,8 @@ public class AimBehaviour : GenericBehaviour
 
     private void Start()
     {
-        aimBool = Animator.StringToHash(FC.AnimatorKey.Aim);
-        cornerBool = Animator.StringToHash(FC.AnimatorKey.Corner);
+        aimBool = Animator.StringToHash(KJY.AnimatorKey.Aim);
+        cornerBool = Animator.StringToHash(KJY.AnimatorKey.Corner);
 
         Transform hips = behaviourController.GetAnimator.GetBoneTransform(HumanBodyBones.Hips);//캐릭터의 본의 위치를 가져옴
         initialRootRotation = (hips.parent == transform) ? Vector3.zero : hips.parent.localEulerAngles;

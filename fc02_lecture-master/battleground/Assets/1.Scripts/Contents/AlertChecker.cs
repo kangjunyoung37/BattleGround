@@ -6,7 +6,7 @@ public class AlertChecker : MonoBehaviour
 {
     [Range(0,50)]public float alertRadious;
     public int extraWaves = 1;
-    public LayerMask alertMask = FC.TagAndLayer.LayerMasking.Enemy;
+    public LayerMask alertMask = KJY.TagAndLayer.LayerMasking.Enemy;
     private Vector3 current;
     private bool alert;
 

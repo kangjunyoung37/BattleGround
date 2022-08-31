@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+/// <summary>
+/// 실제 행동하는 컴포넌트
+/// </summary>
+public abstract class Action : ScriptableObject
+{
+    public abstract void Act(StateController controller);
+    public virtual void OnReadyAction(StateController controller)
     {
-        
+
     }
 }

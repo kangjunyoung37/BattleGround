@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FC;
-namespace FC
+using KJY;
+namespace KJY
 {
     public class TagAndLayer
     {

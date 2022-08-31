@@ -21,9 +21,9 @@ public class ShootBehaviour : GenericBehaviour
     public float shootRateFactor = 1f;//발사 속도
 
     public float armRotation = 8f;//팔 회전
-    public LayerMask shotMask = ~(FC.TagAndLayer.LayerMasking.IgnoreRayCast | FC.TagAndLayer.LayerMasking.IgnoreShot |
-        FC.TagAndLayer.LayerMasking.CoverInvisible | FC.TagAndLayer.LayerMasking.Player);
-    public LayerMask organicMask = FC.TagAndLayer.LayerMasking.Player | FC.TagAndLayer.LayerMasking.Enemy;//생명체
+    public LayerMask shotMask = ~(KJY.TagAndLayer.LayerMasking.IgnoreRayCast | KJY.TagAndLayer.LayerMasking.IgnoreShot |
+        KJY.TagAndLayer.LayerMasking.CoverInvisible | KJY.TagAndLayer.LayerMasking.Player);
+    public LayerMask organicMask = KJY.TagAndLayer.LayerMasking.Player | KJY.TagAndLayer.LayerMasking.Enemy;//생명체
     public Vector3 leftArmShortAim = new Vector3(-4.0f, 0.0f, 2.0f);//짧은 총을 들었을 때 조준시 왼팔의 위치 보정
 
     private int activeWeapon = 0;//0이 아니면 활성화 되어 있다
@@ -60,12 +60,12 @@ public class ShootBehaviour : GenericBehaviour
 
     private void Start()
     {
-        weaponType = Animator.StringToHash(FC.AnimatorKey.Weapon);
-        aimBool = Animator.StringToHash(FC.AnimatorKey.Aim);
-        blockedAimBool = Animator.StringToHash(FC.AnimatorKey.BlockedAim);
-        changeWeaponTrigger = Animator.StringToHash(FC.AnimatorKey.ChangeWeapon);
-        shootingTrigger = Animator.StringToHash(FC.AnimatorKey.Shooting);
-        reloadBool = Animator.StringToHash(FC.AnimatorKey.Reload);
+        weaponType = Animator.StringToHash(KJY.AnimatorKey.Weapon);
+        aimBool = Animator.StringToHash(KJY.AnimatorKey.Aim);
+        blockedAimBool = Animator.StringToHash(KJY.AnimatorKey.BlockedAim);
+        changeWeaponTrigger = Animator.StringToHash(KJY.AnimatorKey.ChangeWeapon);
+        shootingTrigger = Animator.StringToHash(KJY.AnimatorKey.Shooting);
+        reloadBool = Animator.StringToHash(KJY.AnimatorKey.Reload);
         weapons = new List<InteractiveWeapon>(new InteractiveWeapon[3]);
         aimBehaviour = GetComponent<AimBehaviour>();
         bulletHoles = new List<GameObject>();
@@ -184,7 +184,7 @@ public class ShootBehaviour : GenericBehaviour
 
             }
             SoundManager.Instance.PlayOndShotEffect((int)weapons[weapon].shotSound, gunMuzzle.position, 5f);
-            GameObject gameController = GameObject.FindGameObjectWithTag(FC.TagAndLayer.TagName.GameController);
+            GameObject gameController = GameObject.FindGameObjectWithTag(KJY.TagAndLayer.TagName.GameController);
             gameController.SendMessage("RootAlertNearBy", ray.origin, SendMessageOptions.DontRequireReceiver);
             shotInterval = originalShotInterval;
             isShotAlive = true;

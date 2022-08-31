@@ -81,6 +81,37 @@ public class StateController : MonoBehaviour
         }
     }
 
+    public bool Strafing
+    {
+        get => strafing;
+        set
+        {
+            enemyAnimation.anim.SetBool("Strafe", value);
+            strafing = value;
+        }
+    }
+    public bool Aiming
+    {
+        get => aiming;
+        set
+        {
+            if(aiming != value)
+            {
+                enemyAnimation.anim.SetBool("Aim", value);
+                aiming = value;
+            }
+
+        }
+    }
+
+    public IEnumerator UnstuckAim(float delay)
+    {
+        yield return new WaitForSeconds(delay * 0.5f);
+        Aiming = false;
+        yield return new WaitForSeconds(delay * 0.5f);
+        Aiming = true;
+    }
+
     
 
 }
