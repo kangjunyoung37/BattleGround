@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61549844995eb574d8d960c78e3a645c, type: 3}
-  m_Name: BlowCoverDecision
+  m_Script: {fileID: 11500000, guid: 816803927d7959849bdeb6139a12a9f7, type: 3}
+  m_Name: AdvanceCoverDecision
   m_EditorClassIdentifier: 
-  sense: 1
-  invalidateCoverSpot: 1
+  waitRounds: 1
+  targetNear: {fileID: 11400000, guid: 1a2d5f4c4bddd8449be25105d6ae6c34, type: 2}

@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61549844995eb574d8d960c78e3a645c, type: 3}
-  m_Name: BlowCoverDecision
+  m_Script: {fileID: 11500000, guid: 26adaa87e2b03604ea064460e488c381, type: 3}
+  m_Name: FeelAlretDecision
   m_EditorClassIdentifier: 
-  sense: 1
-  invalidateCoverSpot: 1

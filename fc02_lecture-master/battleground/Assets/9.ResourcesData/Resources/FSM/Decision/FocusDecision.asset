@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61549844995eb574d8d960c78e3a645c, type: 3}
   m_Name: FocusDecision
   m_EditorClassIdentifier: 
-  sense: 0
+  sense: 1
   invalidateCoverSpot: 0
