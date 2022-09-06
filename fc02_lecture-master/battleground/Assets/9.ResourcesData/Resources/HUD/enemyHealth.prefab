@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2884069052643099310}
   - component: {fileID: 6776747901427386815}
   - component: {fileID: 8746281986822448571}
-  - component: {fileID: -3271376971442668097}
+  - component: {fileID: 4020233653150301960}
   m_Layer: 5
   m_Name: enemyHealth
   m_TagString: Untagged
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8746281986822448571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-3271376971442668097
+--- !u!114 &4020233653150301960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 855114287364490468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87551d90cf79f49c6ba8b0088960d34d, type: 3}
+  m_Script: {fileID: 11500000, guid: 886339f289667dd43b2335b1e3ccc1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   decayDuration: 2
@@ -174,6 +175,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -247,6 +250,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

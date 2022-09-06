@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b07f21f3078b749ab7822f1ac0d73b, type: 3}
+  m_Name: FocusMoveAction
+  m_EditorClassIdentifier: 
+  clearShotDecision: {fileID: 11400000, guid: 5183e61f8ed2edb4aa0e52e4203ff075, type: 2}
