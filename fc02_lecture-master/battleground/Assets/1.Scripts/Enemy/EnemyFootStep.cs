@@ -12,6 +12,7 @@ public class EnemyFootStep : MonoBehaviour
     private bool playedRightFoot;
     private Vector3 leftFootIKPos;
     private Vector3 rightFootIKPos;
+ 
 
     private void Awake()
     {
@@ -35,20 +36,22 @@ public class EnemyFootStep : MonoBehaviour
     }
     private void Update()
     {
-        float factor = 0.2f;
+        float factor = 0.115f;
         //사운드가 계속 생김
 
         if(anim.velocity.magnitude > 1.4f)
         {
             if(Vector3.Distance(leftFootIKPos,anim.pivotPosition) <= factor && playedLeftFoot == false)
             {
+                Debug.Log(Vector3.Distance(leftFootIKPos, anim.pivotPosition));
                 PlayFootStep();
                 playedLeftFoot = true;
                 playedRightFoot = false;
 
             }
-            if(Vector3.Distance(rightFootIKPos,anim.pivotPosition)<=factor && playedRightFoot == false)
+            else if(Vector3.Distance(rightFootIKPos,anim.pivotPosition)<=factor && playedRightFoot == false)
             {
+                Debug.Log(Vector3.Distance(rightFootIKPos, anim.pivotPosition));
                 PlayFootStep();
                 playedLeftFoot = false;
                 playedRightFoot = true;
