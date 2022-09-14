@@ -43,7 +43,7 @@ public class EnemyFootStep : MonoBehaviour
         {
             if(Vector3.Distance(leftFootIKPos,anim.pivotPosition) <= factor && playedLeftFoot == false)
             {
-                Debug.Log(Vector3.Distance(leftFootIKPos, anim.pivotPosition));
+                //Debug.Log(Vector3.Distance(leftFootIKPos, anim.pivotPosition));
                 PlayFootStep();
                 playedLeftFoot = true;
                 playedRightFoot = false;
@@ -51,7 +51,7 @@ public class EnemyFootStep : MonoBehaviour
             }
             else if(Vector3.Distance(rightFootIKPos,anim.pivotPosition)<=factor && playedRightFoot == false)
             {
-                Debug.Log(Vector3.Distance(rightFootIKPos, anim.pivotPosition));
+                //Debug.Log(Vector3.Distance(rightFootIKPos, anim.pivotPosition));
                 PlayFootStep();
                 playedLeftFoot = false;
                 playedRightFoot = true;
