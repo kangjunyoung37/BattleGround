@@ -10,13 +10,12 @@ public class AimBehaviour : GenericBehaviour
 {
     public Texture2D crossHair;//십자선 이미지
     public float aimTurnSmoothing = 0.15f;//카메라를 향하도록 조준할때 회전속도
+    private int aimBool;//애니메이터 파라미터 조준
+    private int cornerBool;//애니메이터 관련
+    private bool aim; // 조준중인지
+    private bool peekCorner;//플레이어가 코너 모서리에 있는지 여부
     public Vector3 aimPivotOffset = new Vector3(0.5f, 1.2f, 0.0f);
     public Vector3 aimCamOffset = new Vector3(0.0f, 0.4f, -0.7f);
-
-    private int aimBool;//애니메이터 파라미터 조준
-    private bool aim; // 조준중인지
-    private int cornerBool;//애니메이터 관련
-    private bool peekCorner;//플레이어가 코너 모서리에 있는지 여부
     private Vector3 initialRootRotation;
     private Vector3 initialHipRotation;
     private Vector3 initialSpineRotation;
@@ -26,22 +25,23 @@ public class AimBehaviour : GenericBehaviour
     {
         aimBool = Animator.StringToHash(KJY.AnimatorKey.Aim);
         cornerBool = Animator.StringToHash(KJY.AnimatorKey.Corner);
-
-        Transform hips = behaviourController.GetAnimator.GetBoneTransform(HumanBodyBones.Hips);//캐릭터의 본의 위치를 가져옴
+        //캐릭터의 본의 위치를 가져옴
+        Transform hips = behaviourController.GetAnimator.GetBoneTransform(HumanBodyBones.Hips);
         initialRootRotation = (hips.parent == transform) ? Vector3.zero : hips.parent.localEulerAngles;
         initialHipRotation = hips.localEulerAngles;
         initialSpineRotation = behaviourController.GetAnimator.GetBoneTransform(HumanBodyBones.Spine).localEulerAngles;
         myTransform = transform;
     }
+
     //카메라에 따라 플레이어를 올바른 방향으로 회전
     void Rotating()
     {
         Vector3 forward = behaviourController.playerCamera.TransformDirection(Vector3.forward);
         forward.y = 0.0f;
         forward = forward.normalized;
-
         Quaternion targetRotation = Quaternion.Euler(0f, behaviourController.GetCamScript.GetH, 0.0f);
-        float minSpeed = Quaternion.Angle(myTransform.rotation, targetRotation) * aimTurnSmoothing; //카메라방향으로 조금씩 움직이기
+        //카메라방향으로 조금씩 움직이기
+        float minSpeed = Quaternion.Angle(myTransform.rotation, targetRotation) * aimTurnSmoothing; 
 
         if(peekCorner)
         {
@@ -60,12 +60,13 @@ public class AimBehaviour : GenericBehaviour
         }
 
     }
+
     //조준중일때 관리하는 함수
     void AimManageMent()
     {
         Rotating();
-       
     }
+
     private IEnumerator ToggleAimOn()
     {
         yield return new WaitForSeconds(0.05f);
@@ -90,6 +91,7 @@ public class AimBehaviour : GenericBehaviour
 
         }
     }
+
     private IEnumerator ToggleAimOff()
     {
         aim = false;
@@ -99,6 +101,7 @@ public class AimBehaviour : GenericBehaviour
         yield return new WaitForSeconds(0.1f);
         behaviourController.RevokeOverridingBehaviour(this);
     }
+
     public override void LocalFixedUpdate()
     {
         if(aim)
@@ -106,10 +109,12 @@ public class AimBehaviour : GenericBehaviour
             behaviourController.GetCamScript.SetTargetOffset(aimPivotOffset, aimCamOffset);
         }
     }
+
     public override void LocalLateUpdate()
     {
         AimManageMent();
     }
+
     private void Update()
     {
         peekCorner = behaviourController.GetAnimator.GetBool(cornerBool);
@@ -131,6 +136,7 @@ public class AimBehaviour : GenericBehaviour
         behaviourController.GetAnimator.SetBool(aimBool, aim);
 
     }
+
     private void OnGUI()
     {
         if(crossHair != null)

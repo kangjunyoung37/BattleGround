@@ -19,15 +19,12 @@ public class ShootBehaviour : GenericBehaviour
     public int MaxBulletHoels = 50;
     public float shootErrorRate = 0.01f; //오발률
     public float shootRateFactor = 1f;//발사 속도
-
     public float armRotation = 8f;//팔 회전
-    public LayerMask shotMask = ~(KJY.TagAndLayer.LayerMasking.IgnoreRayCast | KJY.TagAndLayer.LayerMasking.IgnoreShot |
-        KJY.TagAndLayer.LayerMasking.CoverInvisible | KJY.TagAndLayer.LayerMasking.Player);
+    public LayerMask shotMask = ~(KJY.TagAndLayer.LayerMasking.IgnoreRayCast | KJY.TagAndLayer.LayerMasking.IgnoreShot | KJY.TagAndLayer.LayerMasking.CoverInvisible | KJY.TagAndLayer.LayerMasking.Player);
     public LayerMask organicMask = KJY.TagAndLayer.LayerMasking.Player | KJY.TagAndLayer.LayerMasking.Enemy;//생명체
     public Vector3 leftArmShortAim = new Vector3(-4.0f, 0.0f, 2.0f);//짧은 총을 들었을 때 조준시 왼팔의 위치 보정
-
     private int activeWeapon = 0;//0이 아니면 활성화 되어 있다
-    
+
     //애니메이터용 인덱스
     private int weaponType;
     private int changeWeaponTrigger;
@@ -104,6 +101,7 @@ public class ShootBehaviour : GenericBehaviour
 
 
     }
+
     //발사 비주얼 담당
     private void DrawShoot(GameObject weapon, Vector3 destination, Vector3 targetNormal ,Transform parent, bool placeSparks = true, bool placeBulletBool = true)
     {
@@ -149,6 +147,7 @@ public class ShootBehaviour : GenericBehaviour
         }
 
     }
+
     private void ShootWeapon(int weapon,bool firstShot = true)
     {
         if(!isAiming || isAimBlocked || behaviourController.GetAnimator.GetBool(reloadBool)|| !weapons[weapon].Shoot(firstShot))
@@ -191,6 +190,7 @@ public class ShootBehaviour : GenericBehaviour
 
         }
     }
+
     public void EndReloadWeapon()
     {
         behaviourController.GetAnimator.SetBool(reloadBool, false);
@@ -208,7 +208,10 @@ public class ShootBehaviour : GenericBehaviour
             aimBehaviour.crossHair = originalCrossHair;
         }
     }
-
+    /// <summary>
+    /// 총을 쏘는 과정 
+    /// 총을 쏘는 속도와 총쏘는 타입에 따라 다르게 발사가 된다.
+    /// </summary>
     private void ShotProgress()
     {
         if(shotInterval > 0.2f)
@@ -246,6 +249,7 @@ public class ShootBehaviour : GenericBehaviour
             burstShotCount = 0;
         }
     }
+
     private void ChangeWeapon(int oldWeapon, int newWeapon)
     {
         if(oldWeapon > 0)
@@ -322,12 +326,6 @@ public class ShootBehaviour : GenericBehaviour
         isAiming = behaviourController.GetAnimator.GetBool(aimBool);
     }
 
-
-
-
-
-
-
     /// <summary>
     /// 인벤토리역할을 하게 될 함수
     /// </summary>
@@ -355,6 +353,7 @@ public class ShootBehaviour : GenericBehaviour
         weapons[slotMap[newWeapon.weaponType]] = newWeapon;
         ChangeWeapon(activeWeapon, slotMap[newWeapon.weaponType]);
     }
+
     private bool CheckforBlockedAim()
     {
         isAimBlocked = Physics.SphereCast(transform.position + castRelativeOrigin, 0.1f, behaviourController.GetCamScript.transform.forward, out RaycastHit hit, distToHand - 0.1f);
@@ -363,6 +362,7 @@ public class ShootBehaviour : GenericBehaviour
         Debug.DrawRay(transform.position + castRelativeOrigin, behaviourController.GetCamScript.transform.forward * distToHand, isAimBlocked ? Color.red : Color.cyan);
         return isAimBlocked;
     }
+
     public void OnAnimatorIK(int layerIndex)
     {
         if(isAiming && activeWeapon > 0)
@@ -390,6 +390,7 @@ public class ShootBehaviour : GenericBehaviour
 
         }
     }
+
     private void LateUpdate()
     {
         if(isAiming && weapons[activeWeapon] && weapons[activeWeapon].weaponType == InteractiveWeapon.WeaponType.SHORT)
